@@ -1,0 +1,84 @@
+.about {
+  padding: 80px 10%;
+  background: #f8fafc;
+}
+
+/* TAG */
+.about-tag {
+  color: #facc15;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+/* TITLE */
+.about h1 {
+  font-size: 48px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 20px;
+}
+
+/* DESCRIPTION */
+.about-desc {
+  max-width: 700px;
+  color: #64748b;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+/* CARDS */
+.about-cards {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.about-card {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 16px;
+  padding: 20px;
+  flex: 1;
+}
+
+.about-card h3 {
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.about-card p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* STORY BOX */
+.story-box {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 900px;
+}
+
+.story-box h2 {
+  color: #0f172a;
+  margin-bottom: 15px;
+}
+
+.story-box p {
+  color: #64748b;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* BUTTON */
+.story-box button {
+  background: #facc15;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+}

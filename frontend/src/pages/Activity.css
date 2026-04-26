@@ -1,0 +1,186 @@
+.activity-page {
+  display: flex;
+  gap: 48px;
+  padding: 40px 8%;
+  background: #f8fafc;
+}
+
+/* LEFT */
+.activity-left {
+  width: 320px;
+}
+
+.profile-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.profile-header {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  background: #facc15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.profile-header h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.profile-header p {
+  margin: 0;
+  color: #64748b;
+}
+
+/* INFO */
+.profile-info {
+  margin-top: 20px;
+}
+
+.profile-info div {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.profile-info span {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* STATS */
+.stats {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.stats div {
+  flex: 1;
+  background: #f1f5f9;
+  padding: 18px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.stats h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* RIGHT */
+.activity-right {
+  flex: 1;
+  max-width: 800px;
+}
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.activity-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.activity-header p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* TABS */
+.tabs {
+  display: inline-flex;
+  align-items: center;
+  background: #e2e8f0;
+  border-radius: 999px;
+  padding: 4px;
+  gap: 4px;
+
+  position: relative;     /* ✅ FIX click issue */
+  z-index: 10;            /* ✅ ensures clickable */
+}
+
+.tabs button {
+  border: none;
+  background: transparent;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #475569;
+  transition: 0.2s;
+}
+
+.tabs button.active {
+  background: white;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+/* CARD */
+.ticket-card {
+  background: white;
+  border-radius: 18px;
+  padding: 20px 24px;
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+
+  position: relative;   /* 🔥 FIX NAVBAR PRICE BUG */
+}
+
+.meta {
+  font-size: 12px;
+  color: #64748b;
+  letter-spacing: 0.5px;
+}
+
+.ticket-card h3 {
+  margin-top: 6px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* RIGHT SIDE */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* PRICE */
+.price {
+  font-size: 18px;
+  font-weight: 700;
+  position: static;   /* ✅ IMPORTANT (fix floating bug) */
+}
+
+/* STATUS */
+.status {
+  background: #fef3c7;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}

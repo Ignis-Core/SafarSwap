@@ -1,0 +1,117 @@
+.navbar {
+  width: 100%;
+  background: #f5f6f8;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 12px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LEFT */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+/* CENTER */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  flex: 1;                 /* ⭐ important */
+  justify-content: center; /* ⭐ center everything */
+}
+
+/* ACTIVE BUTTON */
+.active {
+  background: #0f172a;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
+/* RIGHT */
+.signin {
+  background: #ffd400;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Yellow S box */
+.logo-box {
+  width: 36px;
+  height: 36px;
+  background: #ffd400;
+  color: #000;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+}
+
+/* Yellow Swap text */
+.yellow {
+  color: #ffd400;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #0f172a; /* same dark color */
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #000;
+}
+
+.logo span {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.yellow {
+  color: #facc15;
+}
+
+
+
+.nav-links a {
+  text-decoration: none;
+  color: #0f172a;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+/* 🔥 ACTIVE (dark pill like your screenshot) */
+.nav-links .active {
+  background: #0f172a;
+  color: white;
+}
+
+/* hover */
+.nav-links a:hover {
+  background: #e2e8f0;
+}
