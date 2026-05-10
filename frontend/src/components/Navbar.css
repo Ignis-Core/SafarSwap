@@ -40,14 +40,14 @@
   border-radius: 20px;
 }
 
-/* RIGHT */
-.signin {
+RIGHT
+/* .signin {
   background: #ffd400;
   border: none;
   padding: 8px 18px;
   border-radius: 20px;
   font-weight: 500;
-}
+} */
 .logo {
   display: flex;
   align-items: center;
@@ -114,4 +114,54 @@
 /* hover */
 .nav-links a:hover {
   background: #e2e8f0;
+}
+
+
+.profile-section {
+
+  display: flex;
+  gap: 10px;
+}
+
+.profile-btn {
+
+  background: #ffd400;
+  color: white;
+
+  border: none;
+
+  padding: 8px 16px;
+
+  border-radius: 20px;
+
+  cursor: pointer;
+}
+
+.logout-btn {
+
+  background: rgb(0, 0, 0);
+  color: white;
+
+  border: none;
+
+  padding: 8px 16px;
+
+  border-radius: 20px;
+
+  cursor: pointer;
+}
+
+.sign-btn {
+
+  background: #ffd400;
+
+  border: none;
+
+  padding: 8px 18px;
+
+  border-radius: 20px;
+
+  font-weight: 500;
+
+  cursor: pointer;
 }

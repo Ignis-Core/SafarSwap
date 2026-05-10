@@ -1,106 +1,143 @@
 import "./Buy.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import API from "../services/api";
 import { useNavigate } from "react-router-dom";
 
 export default function Buy() {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [date, setDate] = useState("");
+  const [tickets, setTickets] =
+  useState([]);
 
-  const navigate = useNavigate(); // ✅ must be inside component
+  const navigate = useNavigate(); 
+  useEffect(() => {
 
-  const tickets = [
-    {
-      id: 1,
-      operator: "VRL Travels",
-      from: "Mumbai",
-      to: "Pune",
-      date: "Tonight",
-      time: "10:30 PM",
-      seat: "L12",
-      price: 650,
-      originalPrice: 850,
-      rating: 4.8,
-      verified: true,
-      safe: true,
-      discount: "24% off",
-    },
-    {
-      id: 2,
-      operator: "Orange Tours",
-      from: "Delhi",
-      to: "Jaipur",
-      date: "Apr 25",
-      time: "06:15 AM",
-      seat: "U7",
-      price: 720,
-      originalPrice: 980,
-      rating: 4.6,
-      verified: true,
-      safe: false,
-      discount: "27% off",
-    },
-    {
-      id: 3,
-      operator: "RedBus Premium",
-      from: "Bengaluru",
-      to: "Goa",
-      date: "Apr 26",
-      time: "09:00 PM",
-      seat: "L3",
-      price: 1199,
-      originalPrice: 1400,
-      rating: 4.9,
-      verified: true,
-      safe: true,
-      discount: "20% off",
-    },
-    {
-      id: 4,
-      operator: "SRS Travels",
-      from: "Hyderabad",
-      to: "Chennai",
-      date: "Apr 27",
-      time: "11:45 PM",
-      seat: "L9",
-      price: 880,
-      originalPrice: 1100,
-      rating: 4.5,
-      verified: true,
-      safe: false,
-      discount: "20% off",
-    },
-    {
-      id: 5,
-      operator: "Neeta Travels",
-      from: "Ahmedabad",
-      to: "Mumbai",
-      date: "Apr 25",
-      time: "08:00 AM",
-      seat: "U14",
-      price: 540,
-      originalPrice: 700,
-      rating: 4.4,
-      verified: true,
-      safe: true,
-      discount: "23% off",
-    },
-    {
-      id: 6,
-      operator: "Kallada Travels",
-      from: "Kochi",
-      to: "Bengaluru",
-      date: "Apr 28",
-      time: "07:30 PM",
-      seat: "L2",
-      price: 999,
-      originalPrice: 1200,
-      rating: 4.7,
-      verified: true,
-      safe: false,
-      discount: "23% off",
-    },
-  ];
+  fetchTickets();
+
+}, []);
+const fetchTickets = async () => {
+
+  try {
+
+    const token =
+      localStorage.getItem("token");
+
+    const response = await fetch(
+
+      `${API}/ticket/all`,
+
+      {
+        headers: {
+          Authorization:
+            `Bearer ${token}`,
+        },
+      }
+    );
+
+    const data =
+      await response.json();
+
+    setTickets(data);
+
+  } catch (error) {
+
+    console.log(error);
+  }
+};// ✅ must be inside component
+
+  // const tickets = [
+  //   {
+  //     id: 1,
+  //     operator: "VRL Travels",
+  //     from: "Mumbai",
+  //     to: "Pune",
+  //     date: "Tonight",
+  //     time: "10:30 PM",
+  //     seat: "L12",
+  //     price: 650,
+  //     originalPrice: 850,
+  //     rating: 4.8,
+  //     verified: true,
+  //     safe: true,
+  //     discount: "24% off",
+  //   },
+  //   {
+  //     id: 2,
+  //     operator: "Orange Tours",
+  //     from: "Delhi",
+  //     to: "Jaipur",
+  //     date: "Apr 25",
+  //     time: "06:15 AM",
+  //     seat: "U7",
+  //     price: 720,
+  //     originalPrice: 980,
+  //     rating: 4.6,
+  //     verified: true,
+  //     safe: false,
+  //     discount: "27% off",
+  //   },
+  //   {
+  //     id: 3,
+  //     operator: "RedBus Premium",
+  //     from: "Bengaluru",
+  //     to: "Goa",
+  //     date: "Apr 26",
+  //     time: "09:00 PM",
+  //     seat: "L3",
+  //     price: 1199,
+  //     originalPrice: 1400,
+  //     rating: 4.9,
+  //     verified: true,
+  //     safe: true,
+  //     discount: "20% off",
+  //   },
+  //   {
+  //     id: 4,
+  //     operator: "SRS Travels",
+  //     from: "Hyderabad",
+  //     to: "Chennai",
+  //     date: "Apr 27",
+  //     time: "11:45 PM",
+  //     seat: "L9",
+  //     price: 880,
+  //     originalPrice: 1100,
+  //     rating: 4.5,
+  //     verified: true,
+  //     safe: false,
+  //     discount: "20% off",
+  //   },
+  //   {
+  //     id: 5,
+  //     operator: "Neeta Travels",
+  //     from: "Ahmedabad",
+  //     to: "Mumbai",
+  //     date: "Apr 25",
+  //     time: "08:00 AM",
+  //     seat: "U14",
+  //     price: 540,
+  //     originalPrice: 700,
+  //     rating: 4.4,
+  //     verified: true,
+  //     safe: true,
+  //     discount: "23% off",
+  //   },
+  //   {
+  //     id: 6,
+  //     operator: "Kallada Travels",
+  //     from: "Kochi",
+  //     to: "Bengaluru",
+  //     date: "Apr 28",
+  //     time: "07:30 PM",
+  //     seat: "L2",
+  //     price: 999,
+  //     originalPrice: 1200,
+  //     rating: 4.7,
+  //     verified: true,
+  //     safe: false,
+  //     discount: "23% off",
+  //   },
+  // ];
 
   const filtered = tickets.filter(
     (t) =>
@@ -139,9 +176,9 @@ export default function Buy() {
         <button>Search</button>
       </div>
 
-      <p className="note">
+      {/* <p className="note">
         Showing sample listings — backend not reachable.
-      </p>
+      </p> */}
 
       {/* CARDS */}
       <div className="cards">
@@ -154,7 +191,7 @@ export default function Buy() {
                   <span className="verified">● Verified</span>
                 )}
 
-                {t.safe && (
+                {t.safeForFemale && (
                   <span className="tag pink">
                     Safe for Female ❤️
                   </span>
@@ -163,13 +200,13 @@ export default function Buy() {
                 <span className="discount">{t.discount}</span>
               </div>
 
-              <span className="rating">⭐ {t.rating}</span>
+              <span className="rating">⭐ {t.SellerRating}</span>
             </div>
 
-            <p className="operator">{t.operator}</p>
+            <p className="operator">{t.sellerName}</p>
 
             <h3>
-              {t.from} → {t.to}
+              {t.fromLocation} → {t.toLocation}
             </h3>
 
             {/* DETAILS */}
@@ -184,7 +221,7 @@ export default function Buy() {
               </div>
               <div>
                 <small>SEAT</small>
-                <p>{t.seat}</p>
+                <p>{t.seatNumber}</p>
               </div>
             </div>
 
@@ -197,7 +234,15 @@ export default function Buy() {
 
               <button
                 className="buy-btn"
-                onClick={() => navigate("/payment", { state: t })}
+                onClick={() => navigate("/payment", {
+
+  state: {
+
+    ticket: t
+
+  }
+
+})}
               >
                 Buy now
               </button>

@@ -1,8 +1,33 @@
 import "./Navbar.css";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useEffect,useState } from "react";
 
 export default function Navbar() {
-  const navigate = useNavigate();   // ✅ inside component
+  const navigate = useNavigate();
+     // ✅ inside component
+
+      const [isLoggedIn, setIsLoggedIn] =
+  useState(false);
+
+useEffect(() => {
+
+  const token =
+    localStorage.getItem("token");
+
+  if (token) {
+
+    setIsLoggedIn(true);
+  }
+
+}, []);
+ const handleLogout = () => {
+
+  localStorage.removeItem("token");
+
+  setIsLoggedIn(false);
+
+  navigate("/auth");
+};
 
   return (
     <div className="navbar">
@@ -45,12 +70,42 @@ export default function Navbar() {
         </div>
 
         {/* ✅ SIGN IN BUTTON (CORRECT PLACE) */}
-        <button
-          onClick={() => navigate("/auth")}
-          className="sign-btn"
-        >
-          Sign in
-        </button>
+        {
+  isLoggedIn ? (
+
+    <div className="profile-section">
+
+      <button
+        className="profile-btn"
+        onClick={() =>
+          navigate("/activity")
+        }
+      >
+        👤 Profile
+      </button>
+
+      <button
+        className="logout-btn"
+        onClick={handleLogout}
+      >
+        Logout
+      </button>
+
+    </div>
+
+  ) : (
+
+    <button
+      onClick={() =>
+        navigate("/auth")
+      }
+      className="sign-btn"
+    >
+      Sign in
+    </button>
+
+  )
+}
 
       </div>
     </div>

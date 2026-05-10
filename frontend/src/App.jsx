@@ -9,6 +9,7 @@ import Activity from "./pages/Activity";
 import About from "./pages/About";
 import Auth from "./pages/Auth";
 import Payment from "./pages/Payment";
+import ForgotPasswordfrom from "./pages/ForgotPassword";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="/forgot-password" element={<ForgotPasswordfrom />} />
       </Routes>
 
       <Footer />  {/* ✅ THIS FIXES EVERYTHING */}

@@ -1,8 +1,97 @@
 import "./Activity.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import API from "../services/api";
 
 export default function Activity() {
+  
   const [activeTab, setActiveTab] = useState("bought");
+  const [sales, setSales] = useState([]);
+
+const [purchases, setPurchases] = useState([]);
+
+const [user, setUser] = useState(null);
+useEffect(() => {
+
+  fetchSales();
+
+  fetchPurchases();
+
+  fetchUser();
+
+}, []);
+const fetchUser = async () => {
+
+  try {
+
+    const token =
+      localStorage.getItem("token");
+
+    const response = await fetch(
+      `${API}/user/me`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    const data = await response.json();
+
+    setUser(data);
+
+  } catch (error) {
+
+    console.log(error);
+  }
+};const fetchSales = async () => {
+
+  try {
+
+    const token =
+      localStorage.getItem("token");
+
+    const response = await fetch(
+      `${API}/ticket/my-sales`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    const data = await response.json();
+
+    setSales(data);
+
+  } catch (error) {
+
+    console.log(error);
+  }
+};const fetchPurchases = async () => {
+
+  try {
+
+    const token =
+      localStorage.getItem("token");
+
+    const response = await fetch(
+      `${API}/ticket/my-purchases`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    const data = await response.json();
+
+    setPurchases(data);
+
+  } catch (error) {
+
+    console.log(error);
+  }
+};
 
   return (
     <div className="activity-page">
@@ -14,20 +103,20 @@ export default function Activity() {
           <div className="profile-header">
             <div className="avatar">A</div>
             <div>
-              <h3>Aarav Sharma</h3>
-              <p>Mumbai</p>
+              <h3>{user?.name}</h3>
+              <p>{user?.city}</p>
             </div>
           </div>
 
           <div className="profile-info">
             <div>
               <span>Email</span>
-              <p>aarav@safarswap.com</p>
+              <p>{user?.email}</p>
             </div>
 
             <div>
               <span>Phone</span>
-              <p>98765 43210</p>
+              <p>{user?.phone}</p>
             </div>
 
             <div>
@@ -38,11 +127,11 @@ export default function Activity() {
 
           <div className="stats">
             <div>
-              <h2>2</h2>
+              <h2>{purchases.length}</h2>
               <p>Tickets bought</p>
             </div>
             <div>
-              <h2>2</h2>
+              <h2>{sales.length}</h2>
               <p>Tickets sold</p>
             </div>
           </div>
@@ -65,63 +154,105 @@ export default function Activity() {
               className={activeTab === "bought" ? "active" : ""}
               onClick={() => setActiveTab("bought")}
             >
-              Bought (2)
+              Bought ({purchases.length})
             </button>
 
             <button
               className={activeTab === "sold" ? "active" : ""}
               onClick={() => setActiveTab("sold")}
             >
-              Sold (2)
+              Sold ({sales.length})
             </button>
           </div>
         </div>
 
         {/* ✅ CONDITIONAL RENDERING */}
 
-        {activeTab === "bought" && (
-          <>
-            <div className="ticket-card">
-              <div>
-                <span className="meta">PURCHASED • APR 22</span>
-                <h3>Mumbai → Pune</h3>
-              </div>
+       {activeTab === "bought" && (
 
-              <div className="right">
-                <h3 className="price">₹650</h3>
-                <span className="status">Completed</span>
-              </div>
-            </div>
+  <>
+    {
+      purchases.map((ticket) => (
 
-            <div className="ticket-card">
-              <div>
-                <span className="meta">PURCHASED • MAR 14</span>
-                <h3>Bengaluru → Goa</h3>
-              </div>
+        <div
+          className="ticket-card"
+          key={ticket.id}
+        >
 
-              <div className="right">
-                <h3 className="price">₹1199</h3>
-                <span className="status">Completed</span>
-              </div>
-            </div>
-          </>
-        )}
+          <div>
 
-        {activeTab === "sold" && (
-          <>
-            <div className="ticket-card">
-              <div>
-                <span className="meta">SOLD • APR 10</span>
-                <h3>Delhi → Jaipur</h3>
-              </div>
+            <span className="meta">
+              PURCHASED
+            </span>
 
-              <div className="right">
-                <h3 className="price">₹800</h3>
-                <span className="status">Completed</span>
-              </div>
-            </div>
-          </>
-        )}
+            <h3>
+              {ticket.fromCity}
+              {" → "}
+              {ticket.toCity}
+            </h3>
+
+          </div>
+
+          <div className="right">
+
+            <h3 className="price">
+              ₹{ticket.price}
+            </h3>
+
+            <span className="status">
+              Completed
+            </span>
+
+          </div>
+
+        </div>
+      ))
+    }
+  </>
+)}
+
+      {activeTab === "sold" && (
+
+  <>
+    {
+      sales.map((ticket) => (
+
+        <div
+          className="ticket-card"
+          key={ticket.id}
+        >
+
+          <div>
+
+            <span className="meta">
+              SOLD
+            </span>
+
+            <h3>
+              {ticket.fromCity}
+              {" → "}
+              {ticket.toCity}
+            </h3>
+
+          </div>
+
+          <div className="right">
+
+            <h3 className="price">
+              ₹{ticket.price}
+            </h3>
+
+            <span className="status">
+              Completed
+            </span>
+
+          </div>
+
+        </div>
+      ))
+    }
+  </>
+)}
 
       </div>
     </div>
