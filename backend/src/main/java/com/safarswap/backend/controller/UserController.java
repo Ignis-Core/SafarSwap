@@ -8,6 +8,7 @@ import com.safarswap.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.Map;
 
 import java.util.Optional;
 
@@ -26,12 +27,12 @@ public class UserController {
     public String signup(@RequestBody User user) {
 
         if (userRepository.existsByEmail(user.getEmail())) {
-            return "User already exists ❌";
+            return "User already exists ";
         }
 
         userRepository.save(user);
 
-        return "User registered successfully ✅";
+        return "User registered successfully ";
     }
 
     @PostMapping("/login")
@@ -48,7 +49,7 @@ public class UserController {
 
             return ResponseEntity
                     .status(401)
-                    .body("Invalid email ❌");
+                    .body("Invalid email ");
         }
 
         User user = userOptional.get();
@@ -58,7 +59,7 @@ public class UserController {
 
             return ResponseEntity
                     .status(401)
-                    .body("Wrong password ❌");
+                    .body("Wrong password ");
         }
 
         String token =
@@ -70,5 +71,14 @@ public class UserController {
     public String profile() {
 
         return "Protected Profile API ✅";
+    }
+    @PostMapping("/reset-password")
+    public String resetPassword(
+            @RequestBody Map<String, String> body
+    ) {
+
+        String email = body.get("email");
+
+        return "Reset link sent to " + email;
     }
 }

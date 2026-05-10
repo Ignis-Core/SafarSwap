@@ -12,6 +12,10 @@ public class TicketService {
 
     @Autowired
     private TicketRepository ticketRepository;
+    public List<Ticket> getMySales(String email) {
+
+        return ticketRepository.findBySellerEmail(email);
+    }
 
     public Ticket sellTicket(Ticket ticket) {
         ticket.setSold(false);
@@ -20,6 +24,10 @@ public class TicketService {
 
     public List<Ticket> getAllTickets() {
         return ticketRepository.findAll();
+    }
+    public List<Ticket> getMyPurchases(String email) {
+
+        return ticketRepository.findByBuyerEmail(email);
     }
 
     public List<Ticket> searchTickets(String from, String to) {
@@ -41,5 +49,8 @@ public class TicketService {
         ticketRepository.save(ticket);
 
         return "Ticket booked successfully ✅";
+    }
+    public List<Ticket> getAvailableTickets() {
+        return ticketRepository.findBySoldFalse();
     }
 }

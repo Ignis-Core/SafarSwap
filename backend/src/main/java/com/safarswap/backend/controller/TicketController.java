@@ -3,9 +3,12 @@ package com.safarswap.backend.controller;
 import com.safarswap.backend.model.Ticket;
 import com.safarswap.backend.repository.TicketRepository;
 import com.safarswap.backend.service.TicketService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.safarswap.backend.jwt.JwtUtil;
+import com.safarswap.backend.model.User;
+import com.safarswap.backend.repository.UserRepository;
 
 import java.util.List;
 
@@ -19,6 +22,10 @@ public class TicketController {
     private TicketService ticketService;
     @Autowired
     private JwtUtil jwtUtil;
+    @Autowired
+    private UserRepository userRepository;
+
+
 
 
 
@@ -52,36 +59,57 @@ public class TicketController {
 
         ticket.setSellerEmail(email);
 
+        User user =
+                userRepository
+                        .findByEmail(email)
+                        .orElseThrow();
+
+        ticket.setSellerId(user.getId());
+
+        ticket.setSellerName(user.getName());
+
+        ticket.setSellerRating(
+                user.getRating()
+        );
+
+        ticket.setSellerGender(
+                user.getGender()
+        );
+
         return ticketRepository.save(ticket);
     }
 
-    @GetMapping("/all")
-    public List<Ticket> getAllTickets() {
 
-        return ticketRepository.findAll();
-    }
     @PostMapping("/book/{id}")
     public String bookTicket(
             @PathVariable String id,
             @RequestHeader("Authorization") String authHeader
     ) {
 
+        String token =
+                authHeader.substring(7);
+
+        String buyerEmail =
+                jwtUtil.extractClaims(token)
+                        .getSubject();
+
         Ticket ticket =
-                ticketRepository.findById(id).orElse(null);
+                ticketRepository.findById(id)
+                        .orElse(null);
 
         if (ticket == null) {
             return "Ticket not found ❌";
         }
 
         if (ticket.isSold()) {
-            return "Ticket already booked ❌";
+            return "Ticket already sold ❌";
         }
 
-        String token =
-                authHeader.substring(7);
+        if (ticket.getSellerEmail()
+                .equals(buyerEmail)) {
 
-        String buyerEmail =
-                jwtUtil.extractClaims(token).getSubject();
+            return "You cannot buy your own ticket ❌";
+        }
 
         ticket.setSold(true);
 
@@ -90,5 +118,41 @@ public class TicketController {
         ticketRepository.save(ticket);
 
         return "Ticket booked successfully ✅";
+    }
+    @GetMapping("/my-sales")
+    public List<Ticket> mySales(
+            HttpServletRequest request
+    ) {
+
+        String authHeader =
+                request.getHeader("Authorization");
+
+        String token =
+                authHeader.substring(7);
+
+        String email =
+                jwtUtil.extractEmail(token);
+
+        return ticketRepository
+                .findBySellerEmail(email);
+    }@GetMapping("/my-purchases")
+    public List<Ticket> myPurchases(
+            HttpServletRequest request
+    ) {
+
+        String authHeader =
+                request.getHeader("Authorization");
+
+        String token =
+                authHeader.substring(7);
+
+        String email =
+                jwtUtil.extractEmail(token);
+
+        return ticketRepository
+                .findByBuyerEmail(email);
+    }@GetMapping("/all")
+    public List<Ticket> getAllTickets() {
+        return ticketService.getAvailableTickets();
     }
 }

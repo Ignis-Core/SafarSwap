@@ -8,5 +8,9 @@ import java.util.List;
 public interface TicketRepository extends MongoRepository<Ticket, String> {
 
     List<Ticket> findByFromLocationAndToLocation(String from, String to);
-    /* List<Ticket> findByFromAndTo(String from,String to); */
+
+    List<Ticket> findBySellerEmail(String sellerEmail);
+
+    List<Ticket> findByBuyerEmail(String buyerEmail);
+    List<Ticket> findBySoldFalse();
 }

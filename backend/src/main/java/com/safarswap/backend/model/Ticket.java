@@ -23,4 +23,10 @@ public class Ticket {
     private boolean sold;
 
     private String buyerEmail;
+
+    private String sellerId;
+    private String sellerName;
+    private double sellerRating;
+    private String sellerGender;
+    private boolean safeForFemale;
 }
