@@ -1,0 +1,284 @@
+.buy-page {
+  padding: 40px 8%;
+  background: #f8fafc;
+}
+
+/* TITLE */
+.buy-page h1 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.sub {
+  text-align: center;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+/* SEARCH BOX */
+.search-box {
+  display: flex;
+  gap: 10px;
+  background: white;
+  padding: 15px;
+  border-radius: 16px;
+  max-width: 900px;
+  margin: auto;
+  border: 1px solid #e2e8f0;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.search-box button {
+  background: #facc15;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* NOTE */
+.note {
+  text-align: center;
+  font-size: 12px;
+  color: #64748b;
+  margin: 10px 0;
+}
+
+/* GRID */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 20px;
+}
+
+/* CARD */
+.card {
+  background: white;
+  padding: 18px;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOP ROW */
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* TAG GROUP */
+.tags {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* COMMON TAG STYLE */
+.tags span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* VERIFIED */
+.verified {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* SAFE FOR FEMALE (PINK PERFECT) */
+.tag.pink {
+  background: #ec4899;
+  color: white;
+}
+
+/* DISCOUNT */
+.discount {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+/* RATING (NO BACKGROUND!) */
+.rating {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f59e0b;
+  margin-left: auto;
+}
+
+/* OPERATOR */
+.operator {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 8px;
+}
+
+/* ROUTE */
+.card h3 {
+  margin: 6px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* DETAILS BOX */
+.details {
+  display: flex;
+  justify-content: space-between;
+  background: #f1f5f9;
+  padding: 12px;
+  border-radius: 12px;
+  margin: 12px 0;
+}
+
+.details small {
+  font-size: 10px;
+  color: #64748b;
+}
+
+.details p {
+  margin: 2px 0 0;
+  font-weight: 500;
+}
+
+/* BOTTOM */
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* PRICE (NO YELLOW BACKGROUND!) */
+.price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.old {
+  font-size: 12px;
+  text-decoration: line-through;
+  color: #94a3b8;
+  margin-left: 6px;
+}
+
+/* BUTTON */
+.buy-btn {
+  background: #facc15;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.buy-btn:hover {
+  background: #eab308;
+}
+.tags span {
+  background: unset !important;
+}
+.verified {
+  background: #fef3c7 !important;
+  color: #92400e;
+}
+
+.tag.pink {
+  background: #ec4899 !important;
+  color: white;
+}
+
+.discount {
+  background: #e2e8f0;   /* light grey */
+  color: #334155;        /* dark grey text */
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.rating {
+  background: transparent !important;
+  color: #f59e0b;
+}
+
+/* FORCE RESET (removes yellow override) */
+.tags span,
+.rating,
+.price,
+.old {
+  background: none !important;
+}
+
+/* TAG BASE STYLE */
+.tags span {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* VERIFIED */
+.verified {
+  background: #f2d061; /* light yellow */
+  color: #92400e;        /* dark brown text */
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* SAFE FOR FEMALE */
+.tag.pink {
+  background: #ec4899 !important;
+  color: white;
+}
+
+/* DISCOUNT */
+.discount {
+  background: #e2e8f0 !important;
+  color: #334155;
+}
+
+/* RATING (NO BOX) */
+.rating {
+  background: none !important;
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+/* PRICE (NO BOX) */
+.price {
+  background: none !important;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* OLD PRICE */
+.old {
+  background: none !important;
+  font-size: 12px;
+  text-decoration: line-through;
+  color: #94a3b8;
+}

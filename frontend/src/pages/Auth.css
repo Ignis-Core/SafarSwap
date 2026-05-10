@@ -1,0 +1,168 @@
+/* ================= PAGE ================= */
+.auth-page {
+  display: flex;
+  min-height: 100vh;
+  padding-top: 100px;   /* space for navbar */
+  background: linear-gradient(to right, #fef9c3, #ffffff);
+  align-items: flex-start;   /* 🔥 prevents top cutting */
+}
+
+/* ================= LEFT ================= */
+.auth-left {
+  flex: 1;
+  padding: 80px;
+}
+
+.auth-left h1 {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.auth-left span {
+  background: #facc15;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.auth-left p {
+  margin-top: 20px;
+  color: #475569;
+  font-size: 18px;
+}
+
+.auth-left ul {
+  margin-top: 30px;
+  list-style: none;
+  padding: 0;
+}
+
+.auth-left li {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+/* ================= CARD ================= */
+.auth-card {
+  width: 400px;
+  background: #f8fafc;
+  margin: 20px 80px;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  position: relative;
+}
+
+/* ================= TOGGLE ================= */
+.auth-tabs {
+  display: flex;
+  background: #e2e8f0;
+  border-radius: 999px;
+  padding: 4px;
+  margin-bottom: 20px;
+  height: 42px;              /* 🔥 fixed height */
+  align-items: center;
+}
+
+.auth-tabs button {
+  flex: 1;
+  height: 100%;
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.auth-tabs .active {
+  background:#FFFFFF80;  /* ✅ removes white */
+  color: black;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+/* ================= FORM ================= */
+.auth-card h2 {
+  margin-bottom: 5px;
+}
+
+.sub {
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.auth-card label {
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.auth-card input,
+.auth-card select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  outline: none;
+}
+
+/* ================= ROW ================= */
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+/* ================= BUTTON ================= */
+.primary-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  background: #facc15;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ================= DIVIDER ================= */
+.divider {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* ================= GOOGLE ================= */
+.google-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  cursor: pointer;
+}
+
+/* ================= SWITCH ================= */
+.switch {
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.switch span {
+  color: #2563eb;
+  cursor: pointer;
+}
+
+/* ================= NAVBAR BUTTON ================= */
+.sign-btn {
+  background: #facc15;
+  color: black;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+}
