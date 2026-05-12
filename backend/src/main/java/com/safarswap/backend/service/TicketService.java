@@ -50,7 +50,10 @@ public class TicketService {
 
         return "Ticket booked successfully ✅";
     }
+
     public List<Ticket> getAvailableTickets() {
-        return ticketRepository.findBySoldFalse();
+
+        return ticketRepository
+                .findBySoldFalseAndOperatorApprovedTrue();
     }
 }

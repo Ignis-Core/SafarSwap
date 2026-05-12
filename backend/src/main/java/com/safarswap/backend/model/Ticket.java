@@ -4,6 +4,9 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 @Data
 @Document(collection = "tickets")
 public class Ticket {
@@ -16,7 +19,7 @@ public class Ticket {
     private String date;
     private String time;
 
-    private double price;
+
     private String seatNumber;
 
     private String sellerEmail;
@@ -29,4 +32,16 @@ public class Ticket {
     private double sellerRating;
     private String sellerGender;
     private boolean safeForFemale;
+
+    private LocalDate travelDate;
+    private LocalTime departureTime;
+    private boolean operatorApproved=false;
+    private double price;
+    private double originalPrice;
+
+    private int reportCount = 0;
+
+    private boolean blocked = false;
+
+    private boolean rated=false;
 }

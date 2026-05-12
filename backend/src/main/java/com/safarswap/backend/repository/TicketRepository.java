@@ -13,4 +13,5 @@ public interface TicketRepository extends MongoRepository<Ticket, String> {
 
     List<Ticket> findByBuyerEmail(String buyerEmail);
     List<Ticket> findBySoldFalse();
+    List<Ticket> findBySoldFalseAndOperatorApprovedTrue();
 }

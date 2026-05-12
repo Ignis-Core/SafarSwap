@@ -10,6 +10,7 @@ import com.safarswap.backend.jwt.JwtUtil;
 import com.safarswap.backend.model.User;
 import com.safarswap.backend.repository.UserRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -49,7 +50,28 @@ public class TicketController {
     public Ticket addTicket(
             @RequestBody Ticket ticket,
             @RequestHeader("Authorization") String authHeader
+    ) {if (
+            ticket.getPrice()
+                    >
+                    ticket.getOriginalPrice()
     ) {
+
+        throw new RuntimeException(
+                "Resale price cannot exceed original ticket price"
+        );
+    }
+        LocalDate today =
+            LocalDate.now();
+
+        if (
+                ticket.getTravelDate()
+                        .isBefore(today)
+        ) {
+
+            throw new RuntimeException(
+                    "Expired ticket cannot be sold"
+            );
+        }
 
         String token =
                 authHeader.substring(7);
@@ -154,5 +176,29 @@ public class TicketController {
     }@GetMapping("/all")
     public List<Ticket> getAllTickets() {
         return ticketService.getAvailableTickets();
+    }@PostMapping("/report/{id}")
+    public String reportTicket(
+            @PathVariable String id
+    ) {
+
+        Ticket ticket =
+                ticketRepository
+                        .findById(id)
+                        .orElseThrow();
+
+        ticket.setReportCount(
+                ticket.getReportCount() + 1
+        );
+
+        if (
+                ticket.getReportCount() >= 3
+        ) {
+
+            ticket.setBlocked(true);
+        }
+
+        ticketRepository.save(ticket);
+
+        return "Reported";
     }
 }
