@@ -40,6 +40,52 @@ export default function About() {
 
       </div>
 
+      {/* STATS */}
+<div className="stats-section">
+
+  <div className="stat-box">
+    <h2>50K+</h2>
+    <p>Monthly ticket swaps</p>
+  </div>
+
+  <div className="stat-box">
+    <h2>12</h2>
+    <p>Indian states covered</p>
+  </div>
+
+  <div className="stat-box">
+    <h2>4.8★</h2>
+    <p>Average seller rating</p>
+  </div>
+
+</div>
+
+{/* HOW IT WORKS */}
+<div className="how-section">
+
+  <h2>How SafarSwap works</h2>
+
+  <div className="steps">
+
+    <div className="step">
+      <span>1</span>
+      <p>Seller uploads unused ticket</p>
+    </div>
+
+    <div className="step">
+      <span>2</span>
+      <p>Buyer books safely</p>
+    </div>
+
+    <div className="step">
+      <span>3</span>
+      <p>Ticket gets transferred securely</p>
+    </div>
+
+  </div>
+
+</div>
+
       {/* STORY BOX */}
       <div className="story-box">
         <h2>Our story</h2>

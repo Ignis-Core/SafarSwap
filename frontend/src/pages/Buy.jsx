@@ -141,8 +141,8 @@ const fetchTickets = async () => {
 
   const filtered = tickets.filter(
     (t) =>
-      t.from.toLowerCase().includes(from.toLowerCase()) &&
-      t.to.toLowerCase().includes(to.toLowerCase())
+      t.fromLocation.toLowerCase().includes(from.toLowerCase()) &&
+      t.toLocation.toLowerCase().includes(to.toLowerCase())
   );
 
   return (
@@ -190,17 +190,50 @@ const fetchTickets = async () => {
                 {t.verified && (
                   <span className="verified">● Verified</span>
                 )}
+                {t.verifiedSeller && (
+                  <span className="verified">
+                    Trusted Seller
+                  </span>
+                )}
 
                 {t.safeForFemale && (
                   <span className="tag pink">
                     Safe for Female ❤️
                   </span>
-                )}
+                )}{
+  t.preferredGender ===
+  "Female" && (
+
+    <span className="tag pink">
+      Female Only 💖
+    </span>
+  )
+}
+
+{
+  t.preferredGender ===
+  "Male" && (
+
+    <span className="tag blue">
+      Male Only
+    </span>
+  )
+}
 
                 <span className="discount">{t.discount}</span>
               </div>
 
-              <span className="rating">⭐ {t.SellerRating}</span>
+              <div className="rating-box">
+
+  <span className="rating">
+    ⭐ {t.sellerRating?.toFixed(1)}
+  </span>
+
+  <small>
+    ({t.sellerTotalRatings} ratings)
+  </small>
+
+</div>
             </div>
 
             <p className="operator">{t.sellerName}</p>

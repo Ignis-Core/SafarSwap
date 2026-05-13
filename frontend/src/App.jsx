@@ -10,6 +10,7 @@ import About from "./pages/About";
 import Auth from "./pages/Auth";
 import Payment from "./pages/Payment";
 import ForgotPasswordfrom from "./pages/ForgotPassword";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
   return (
