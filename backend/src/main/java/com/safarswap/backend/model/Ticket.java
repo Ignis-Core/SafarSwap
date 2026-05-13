@@ -44,4 +44,8 @@ public class Ticket {
     private boolean blocked = false;
 
     private boolean rated=false;
+    private String preferredGender="Any";
+    private boolean femaleOnly;
+    private int SellerTotalRatings;
+    private boolean verifiedSeller=true;
 }

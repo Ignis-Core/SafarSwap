@@ -36,8 +36,8 @@ public class UserController {
         if (userRepository.existsByEmail(user.getEmail())) {
             return "User already exists ";
         }
-ticket.setRated(true);
-        ticketRepository.save(ticket);
+//ticket.setRated(true);
+//        ticketRepository.save(ticket);
         userRepository.save(user);
 
         return "User registered successfully ";
@@ -148,9 +148,7 @@ ticket.setRated(true);
 
             return "You cannot rate yourself";
         }
-        if(ticket.isRated()){
-            return "You already rated this seller";}
-        }
+
         Ticket ticket =
                 ticketRepository
                         .findById(ticketId)
@@ -159,7 +157,9 @@ ticket.setRated(true);
         if (ticket == null) {
 
             return "Ticket not found";
-        }
+        }if(ticket.isRated()){
+            return "You already rated this seller";}
+
 
         // ⭐ calculate new average
         double newRating = (
@@ -184,7 +184,10 @@ ticket.setRated(true);
         );
 
         userRepository.save(seller);
+        ticket.setRated(true);
+        ticketRepository.save(ticket);
 
         return "Rating added successfully";
     }
-}
+    }
+

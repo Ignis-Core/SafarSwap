@@ -93,6 +93,7 @@ public class TicketController {
         ticket.setSellerRating(
                 user.getRating()
         );
+        ticket.setVerifiedSeller(true);
 
         ticket.setSellerGender(
                 user.getGender()
@@ -122,11 +123,49 @@ public class TicketController {
         if (ticket == null) {
             return "Ticket not found ❌";
         }
+        User buyer =
+                userRepository
+                        .findByEmail(buyerEmail)
+                        .orElse(null);
 
+        if (buyer == null) {
+
+            return "Buyer not found ❌";
+        }
         if (ticket.isSold()) {
             return "Ticket already sold ❌";
         }
+        if (
 
+                ticket.getPreferredGender()
+                        .equals("Female")
+
+                        &&
+
+                        buyer.getGender()
+                                .equals("Male")
+
+        ) {
+
+            return
+                    "This ticket is reserved for female passengers ❌";
+        }
+
+        if (
+
+                ticket.getPreferredGender()
+                        .equals("Male")
+
+                        &&
+
+                        buyer.getGender()
+                                .equals("Female")
+
+        ) {
+
+            return
+                    "This ticket is reserved for male passengers ❌";
+        }
         if (ticket.getSellerEmail()
                 .equals(buyerEmail)) {
 
